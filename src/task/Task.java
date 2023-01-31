@@ -53,6 +53,7 @@ public abstract class Task {
         return description;
     }
 
+
     public void setTitle(String title) throws IncorrectArgumentException {
         if (title == null || title.isEmpty()) {
             throw new IncorrectArgumentException("<ЗАГОЛОВОК>");
@@ -86,10 +87,9 @@ public abstract class Task {
     public String toString() {
         return "Задача: " +
                 "id--> " + id +
-                "Заголовок--> " + title + '\'' +
-                ",  Тип--> " + type +
-                ", Дата и время--> " + dateTime +
-                ", Описание: " + description + '\'' +
-                '}';
+                ". Заголовок: <<" + title +
+                ">>. " + type +
+                ". Дата и время: " + dateTime +
+                ". Описание: " + description;
     }
 }

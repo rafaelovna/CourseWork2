@@ -20,6 +20,7 @@ public class Main {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public static void main(String[] args) {
+
         try (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
@@ -111,15 +112,12 @@ public class Main {
         Type type = null;
         int typeChoice = scanner.nextInt();
         switch (typeChoice) {
-            case 1:
-                type = Type.PERSONAL;
-                break;
-            case 2:
-                type = Type.WORK;
-                break;
-            default:
+            case 1 -> type = Type.PERSONAL;
+            case 2 -> type = Type.WORK;
+            default -> {
                 System.out.println("Тип задачи введен некорректно!");
                 scanner.close();
+            }
         }
         return type;
     }
@@ -153,23 +151,12 @@ public class Main {
         Task task = null;
         try {
             switch (appearsIn) {
-                case 1:
-                    task = new OneTimeTask(title, type, taskTime, description);
-                    break;
-                case 2:
-                    task = new DailyTask(title, type, taskTime, description);
-                    break;
-                case 3:
-                    task = new WeeklyTask(title, type, taskTime, description);
-                    break;
-                case 4:
-                    task = new MonthlyTask(title, type, taskTime, description);
-                    break;
-                case 5:
-                    task = new YearlyTask(title, type, taskTime, description);
-                    break;
-                default:
-                    System.out.println("Повторяемость задачи введена некорректно");
+                case 1 -> task = new OneTimeTask(title, type, taskTime, description);
+                case 2 -> task = new DailyTask(title, type, taskTime, description);
+                case 3 -> task = new WeeklyTask(title, type, taskTime, description);
+                case 4 -> task = new MonthlyTask(title, type, taskTime, description);
+                case 5 -> task = new YearlyTask(title, type, taskTime, description);
+                default -> System.out.println("Повторяемость задачи введена некорректно");
             }
         } catch (IncorrectArgumentException e) {
             System.out.println(e.getMessage());
