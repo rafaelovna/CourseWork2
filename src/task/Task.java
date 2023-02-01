@@ -31,7 +31,7 @@ public abstract class Task {
         this.id = idGenerator++;
     }
 
-    public abstract boolean appearsIn(LocalDate date) throws IncorrectArgumentException;
+    public abstract boolean appearsIn(LocalDate date);
 
     public String getTitle() {
         return title;
